@@ -1,0 +1,17 @@
+{
+    "name": "armindo/goweb-plugin",
+    "description": "Plugin da Goweb",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Goweb",
+            "email": "armindo@goweb.pt"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}

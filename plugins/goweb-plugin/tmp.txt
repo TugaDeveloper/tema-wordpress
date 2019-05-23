@@ -1,0 +1,155 @@
+--------------------------------------------------------------------------------------------------------
+Este ficheiro contém código desativado temporariamente
+--------------------------------------------------------------------------------------------------------
+
+if ( class_exists ( 'Inc\\Init' ) ) {
+	Inc\Init::register_services();
+}
+
+
+use Inc\activate;
+use Inc\deactivate;
+use Inc\admin\admin\adminPages;
+//equire_once plugin_dir_path( __FILE__ ) . '/inc/admin/admin-pages.php';
+
+if ( !class_exists ( 'GoGallery' ) ){
+
+class GoGallery
+{
+	
+	public $plugin;
+
+	function __construct() {
+		$this->plugin = plugin_basename( __FILE__ );
+	}
+
+	// Registar tudo o que precisamos
+	function register() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+
+		add_action( 'admin_menu', array ( $this, 'add_admin_pages' ) );
+
+		plugin_basename ( __FILE__ );
+
+		add_filter ( "plugin_action_links_$this->plugin", array ($this, 'settings_link') );
+	}
+
+	// Link para os settings
+	public function settings_link(){
+		$settings_link = '<a href="options-general.php?page=go_gallery">Settings</a>'; 
+		array_push ( $links, $settings_link  );
+		return $links;
+	}
+
+	// Adicionar página de administrador
+	public function add_admin_pages(){
+		add_menu_page ('GoGallery', 'GoGallery', 'manage_options', 'go_gallery', array (
+			$this,
+			'admin_index'
+		), 'dashicons-store', 110);
+	}
+
+	// Caminho para o ficheiro admin.php para a página do administrador
+	public function admin_index(){
+		require_once  plugin_dir_path( __FILE__ ) . 'templates/admin.php';
+	}
+
+	protected function create_post_type() {
+		add_action( 'init', array( $this, 'custom_post_type' ) );
+	}
+
+	/*
+	function activate() {
+		// generated a CPT
+		$this->custom_post_type();
+		// flush rewrite rules
+		flush_rewrite_rules();
+	}
+
+	function deactivate() {
+		// flush rewrite rules
+		flush_rewrite_rules();
+	}
+	*/
+
+	function custom_post_type() {
+		register_post_type( 'gallery', ['public' => true, 'label' => 'Galeria'] );
+	}
+
+	function enqueue() {
+		// enqueue all our scripts
+		wp_enqueue_style( 'mypluginstyle', plugins_url( '/assets/mystyle.css', __FILE__ ) );
+		wp_enqueue_script( 'mypluginscript', plugins_url( '/assets/myscript.js', __FILE__ ) );
+	}
+	
+/*
+	private function print_stuff() {
+		echo 'Test';
+	}
+*/
+}
+
+}
+
+
+/*
+class SecondClass extends GoGallery
+{
+	function register_post_type() {
+		$this->create_post_type();
+	}
+}
+*/
+
+// Cria nova instância se a classe existir
+if ( class_exists( 'GoGallery' ) ) {
+	$goGallery = new GoGallery();
+	$goGallery->register();
+}
+
+
+/*
+$secondClass = new SecondClass();
+$secondClass->register_post_type();
+*/
+
+// Para ativar o plugin
+//require_once  plugin_dir_path( __FILE__ ) . 'inc/go-gallery-activate.php';
+//register_activation_hook( __FILE__, array( 'GoGalleryActivate', 'activate' ) );
+
+// Para desativar o plugin
+//require_once  plugin_dir_path( __FILE__ ) . 'inc/go-gallery-deactivate.php';
+//register_deactivation_hook( __FILE__, array( 'GoGalleryDeactivate', 'deactivate' ) );
+
+
+   // Adicionar página de administrador
+	/*public function add_admin_pages(){
+		add_menu_page ('GoGallery', 'GoGallery', 'manage_options', 'go_gallery', array (
+			$this,
+			'admin_index'
+		), 'dashicons-store', 110);
+	}
+
+	// Caminho para o ficheiro admin.php para a página do administrador
+	public function admin_index(){
+		require_once $this->plugin_path . 'templates/admin.php';
+	}*/
+
+//use Activate;
+//use Deactivate;
+
+
+
+ // Definição de constantes (utilizar apenas maiúsculas
+ /*
+define ( 'PLUGIN_PATH', plugin_dir_path ( __FILE__ ) );
+define ( 'PLUGIN_URL', plugin_dir_url ( __FILE__ ) );
+define ( 'PLUGIN', plugin_basename ( __FILE__ ) );
+*/
+
+
+   /*protected $plugin;
+
+    public function __construct () {
+        $this->plugin = PLUGIN;
+    }*/
