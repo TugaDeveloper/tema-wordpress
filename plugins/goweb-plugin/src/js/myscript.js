@@ -1,6 +1,6 @@
 window.addEventListener("load", function() {
 
-	// Armazenamento de variáveis das tabs
+	// Armazenar variáveis das tabs
 	var tabs = document.querySelectorAll("ul.nav-tabs > li");
 
 	for (var i = 0; i < tabs.length; i++) {

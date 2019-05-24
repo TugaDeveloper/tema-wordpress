@@ -90,7 +90,23 @@ class Admin extends BaseController
 
 	public function setSettings()
 	{
-		$args = array(
+
+		$args = array(array(
+			'option_group' => 'goweb_plugin_settings',
+			'option_name' => 'goweb_plugin',
+			'callback' => array( $this->callbacks_mngr, 'checkboxSanitize' )
+		)
+	);
+
+		/*foreach ($this->managers as $key => $value){
+			$args[] = array(
+				'option_group' => 'goweb_plugin_settings',
+				'option_name' => $key,
+				'callback' => array( $this->callbacks_mngr, 'checkboxSanitize' )
+			);
+		}*/
+
+		/*$args = array(
 			array(
 				'option_group' => 'goweb_plugin_settings',
 				'option_name' => 'cpt_manager',
@@ -132,7 +148,7 @@ class Admin extends BaseController
 				'callback' => array( $this->callbacks, 'checkboxSanitize' )
 			),
 			
-		);
+		);*/
 
 		$this->settings->setSettings( $args );
 	}
@@ -153,7 +169,25 @@ class Admin extends BaseController
 
 	public function setFields()
 	{
-		$args = array(
+
+		$args = array();
+
+		foreach ( $this->managers as $key => $value ){
+			$args[] = array(
+				'id' => $key,
+				'title' => $value,
+				'callback' => array( $this->callbacks_mngr, 'checkboxField' ),
+				'page' => 'goweb_plugin',
+				'section' => 'goweb_admin_index',
+				'args' => array(
+					'option_name' => 'goweb_plugin',
+					'label_for' => $key,
+					'class' => 'ui-toogle'
+				)
+			);
+		}
+
+		/*$args = array(
 			array(
 				'id' => 'cpt_manager',
 				'title' => 'Ativar posts personalizados',
@@ -262,7 +296,7 @@ class Admin extends BaseController
 				)
 			),
 
-		);
+		);*/
 
 		$this->settings->setFields( $args );
 	}
