@@ -28,6 +28,36 @@ class AdminCallbacks extends BaseController
 		return require_once( "$this->plugin_path/templates/widget.php" );
 	}
 
+	public function adminGallery()
+	{
+		echo "<h1>Gallery Manager</h1>";
+	}
+
+	public function adminTestimonial()
+	{
+		echo "<h1>Testimonial Manager</h1>";
+	}
+
+	public function adminTemplates()
+	{
+		echo "<h1>Templates Manager</h1>";
+	}
+
+	public function adminAuth()
+	{
+		echo "<h1>Templates Manager</h1>";
+	}
+
+	public function adminMembership()
+	{
+		echo "<h1>Membership Manager</h1>";
+	}
+
+	public function adminChat()
+	{
+		echo "<h1>Chat Manager</h1>";
+	}
+
 	//public function gowebOptionsGroup( $input )
 	//{
 	//	return $input;
@@ -38,7 +68,7 @@ class AdminCallbacks extends BaseController
 	//	echo 'Secção Principal';
 	//}
 
-	public function gowebtextExample()
+	/*public function gowebtextExample()
 	{
 		$value = esc_attr( get_option( 'text_example' ) );
 		echo '<input type="text" class="regular-text" name="text_example" value="' . $value . '" placeholder="Write Something Here!">';
@@ -48,5 +78,5 @@ class AdminCallbacks extends BaseController
 	{
 		$value = esc_attr( get_option( 'first_name' ) );
 		echo '<input type="text" class="regular-text" name="first_name" value="' . $value . '" placeholder="Write your First Name">';
-	}
+	}*/
 }

@@ -31,4 +31,11 @@ class BaseController
 			'chat_manager' => 'Ativar gestor de chat'
 		);
 	}
+
+	public function activated( string $key )
+	{
+		$option = get_option( 'goweb_plugin' );
+
+		return isset( $option[ $key ] ) ? $option[ $key ] : false;
+	}
 }

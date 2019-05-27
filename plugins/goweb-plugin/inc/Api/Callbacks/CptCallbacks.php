@@ -4,25 +4,19 @@
  */
 namespace Inc\Api\Callbacks;
 
-use Inc\Base\BaseController;
+class CptCallbacks{
 
-class ManagerCallbacks extends BaseController
-{
-	public function checkboxSanitize( $input )
-	{
-		$output = array();
+	public function cptSectionManager(){
+		echo 'Personalize os seus posts. Crie os tipos que quiser.';
+    }
+    
+    public function cptSanitize($input){
+        return $input;
+    }
 
-		foreach ( $this->managers as $key => $value ) {
-			$output[$key] = isset( $input[$key] ) ? true : false;
-		}
-
-		return $output;
-	}
-
-	public function adminSectionManager()
-	{
-		echo 'Escolha o que deseja ativar neste plugin utilizando as caixas de ativação em baixo.';
-	}
+    public function textField($args){
+        //return input
+    }
 
 	public function checkboxField( $args )
 	{
