@@ -19,7 +19,7 @@ class CptCallbacks{
     }
 
 	public function checkboxField( $args )
-	{
+	{        
 		$name = $args['label_for'];
 		$classes = $args['class'];
 		$option_name = $args['option_name'];
