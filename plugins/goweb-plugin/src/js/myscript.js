@@ -1,4 +1,8 @@
+import 'code-prettify';
+
 window.addEventListener("load", function() {
+
+	PR.prettyPrint();
 
 	// Armazenar variáveis das tabs
 	var tabs = document.querySelectorAll("ul.nav-tabs > li");
