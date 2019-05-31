@@ -1,6 +1,6 @@
 {
 	"name": "goweb-plugin",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Plugin da Goweb Agency",
 	"author": "Goweb Agency <armindo@goweb.pt> (https://gowebagency.pt)",
 	"repository": {

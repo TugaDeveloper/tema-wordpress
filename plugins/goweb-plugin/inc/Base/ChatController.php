@@ -19,7 +19,7 @@ class ChatController extends BaseController
 
 	public function register()
 	{
-		if ( ! $this->activated( 'media_widget' ) ) return;
+		if ( ! $this->activated( 'chat_controller' ) ) return;
 
 		$this->settings = new SettingsApi();
 

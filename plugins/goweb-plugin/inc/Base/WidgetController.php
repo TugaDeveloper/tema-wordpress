@@ -4,33 +4,38 @@
  */
 namespace Inc\Base;
 
-use Inc\Api\SettingsApi;
+/*use Inc\Api\SettingsApi;*/
 use Inc\Base\BaseController;
-use Inc\Api\Callbacks\AdminCallbacks;
+use Inc\Api\Widgets\MediaWidget;
+/*use Inc\Api\Callbacks\AdminCallbacks;*
 
 /**
 * 
 */
 class WidgetController extends BaseController
 {
-	public $callbacks;
+	//public $callbacks;
 
-	public $subpages = array();
+	//public $subpages = array();
 
 	public function register()
 	{
-		if ( ! $this->activated( 'chat_manager' ) ) return;
+		if ( ! $this->activated( 'media_widget' ) ) return;
 
-		$this->settings = new SettingsApi();
+		$media_widget = new MediaWidget();
+		
+		$media_widget->register();
+
+		/*$this->settings = new SettingsApi();
 
 		$this->callbacks = new AdminCallbacks();
 
 		$this->setSubpages();
 
-		$this->settings->addSubPages( $this->subpages )->register();
+		$this->settings->addSubPages( $this->subpages )->register();*/
 	}
 
-	public function setSubpages()
+	/*public function setSubpages()
 	{
 		$this->subpages = array(
 			array(
@@ -42,5 +47,5 @@ class WidgetController extends BaseController
 				'callback' => array( $this->callbacks, 'adminChat' )
 			)
 		);
-	}
+	}*/
 }

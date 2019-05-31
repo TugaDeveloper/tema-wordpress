@@ -6,7 +6,7 @@
 Plugin Name: Plugin Goweb
 Plugin URI: https://gowebagency.pt
 Description: Esta é a minha primeira tentativa a criar um plugin no WordPress.
-Version: 0.0.3
+Version: 0.0.4
 Author: Goweb Agency
 Author URI: https://gowebagency.pt
 License: GPLv2 or later

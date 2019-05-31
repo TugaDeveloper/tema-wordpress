@@ -118,7 +118,8 @@ use Inc\Api\Callbacks\AdminCallbacks;
           'args' => array(
             'option_name' => 'goweb_plugin_cpt',
             'label_for' => 'post_type',
-            'placeholder' => 'ID'
+						'placeholder' => 'ID',
+						'array' => 'post_type'
             )
           ),  
           array(
@@ -130,7 +131,8 @@ use Inc\Api\Callbacks\AdminCallbacks;
           'args' => array(
             'option_name' => 'goweb_plugin_cpt',
             'label_for' => 'singular_name',
-            'placeholder' => 'Produto'
+						'placeholder' => 'Produto',
+						'array' => 'post_type'
             )
           ),
           array(
@@ -142,7 +144,8 @@ use Inc\Api\Callbacks\AdminCallbacks;
             'args' => array(
               'option_name' => 'goweb_plugin_cpt',
               'label_for' => 'plural_name',
-              'placeholder' => 'Produtos'
+							'placeholder' => 'Produtos',
+							'array' => 'post_type'
             )
           ),
           array(
@@ -154,7 +157,8 @@ use Inc\Api\Callbacks\AdminCallbacks;
             'args' => array(
               'option_name' => 'goweb_plugin_cpt',
               'label_for' => 'public',
-              'class' => 'ui-toogle',
+							'class' => 'ui-toogle',
+							'array' => 'post_type'
             )
           ),
           array(
@@ -166,7 +170,8 @@ use Inc\Api\Callbacks\AdminCallbacks;
             'args' => array(
               'option_name' => 'goweb_plugin_cpt',
               'label_for' => 'has_archive',
-              'class' => 'ui-toogle',
+							'class' => 'ui-toogle',
+							'array' => 'post_type'
             )
           )
 
@@ -174,46 +179,6 @@ use Inc\Api\Callbacks\AdminCallbacks;
 
       $this->settings->setFields( $args );
     }
-    
-      /*
-      public function storeCustomPostTypes(){
-          $this->custom_post_types = array(
-              array(
-            'post_type' => 'goweb_product',
-            'name' => 'Produtos',
-            'singular_name' => 'Produto',
-            'public' => true,
-            'has_archive' => true
-          ),  array(
-            'post_type' => 'goweb_news',
-            'name' => 'Notícias',
-            'singular_name' => 'Notícia',
-            'public' => true,
-            'has_archive' => false,
-          )
-        );
-      }    
-
-      public function registerCustomPostTypes(){
-
-          foreach($this->custom_post_types as $post_type){
-
-
-          register_post_type($post_type['post_type'],
-          array(
-              'labels' => array(
-                  'name' => $post_type['name'],
-                  'singular_name' => $post_type['singular_name']
-              ),
-              'public' => $post_type['public'],
-              'has_archive' => $post_type['has_archive']
-            )
-          
-          );
-
-          }  
-      }
-  }*/
 
   public function storeCustomPostTypes()
 	{
