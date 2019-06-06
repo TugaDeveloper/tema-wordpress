@@ -28,7 +28,7 @@ class BaseController
 			'templates_manager' => 'Ativar gestor de templates',
 			'login_manager' => 'Ativar gestor de logins',
 			'membership_manager' => 'Ativar gestor de utilizadores',
-			'chat_manager' => 'Ativar gestor de chat'
+			'chat_manager' => 'Ativar gestor de chat',
 		);
 	}
 
