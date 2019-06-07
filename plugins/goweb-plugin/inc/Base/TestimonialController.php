@@ -6,7 +6,6 @@ namespace Inc\Base;
 
 use Inc\Api\SettingsApi;
 use Inc\Base\BaseController;
-//use Inc\Api\Callbacks\AdminCallbacks;
 use Inc\Api\Callbacks\TestimonialCallbacks;
 
 /**
@@ -16,10 +15,6 @@ class TestimonialController extends BaseController{
 	public $settings;
 
 	public $callbacks;
-
-	//public $callbacks;
-
-	//public $subpages = array();
 
 	public function register()
 	{
@@ -44,7 +39,47 @@ class TestimonialController extends BaseController{
 	}
 
 	public function submit_testimonial(){
-		echo 'Post Request!';
+		if (! DOING_AJAX || check_ajax_referer('testimonial-nonce', 'nonce')){
+			return $this->return_json('error');
+		}
+
+		$name = sanitize_text_field($_POST['name']);
+		$email = sanitize_email($_POST['email']);
+		$message = sanitize_textarea_field($_POST['message']);
+
+		$data = array(
+			'name' => $name,
+			'email' => $email,
+			'approved' => 0,
+			'featured' => 0,
+		);
+
+		$args = array(
+			'post_title' => 'Testemunho de ' . $name,
+			'post_content' => $message,
+			'post_author' => 1,
+			'post_status' => 'publish',
+			'post_type' => 'testimonial',
+			'meta_input' => array(
+				'_goweb_testimonial_key' => $data
+			)
+		);
+
+		$postID = wp_insert_post($args);
+
+		if($postID){
+			return $this->return_json('success');
+		}
+
+		return $this->return_json('error');
+	}
+
+	public function return_json($status){
+		$return = array(
+			'status' => $status
+		);
+		wp_send_json($return);
+
 		wp_die();
 	}
 
@@ -161,7 +196,7 @@ class TestimonialController extends BaseController{
 
 		$data = array(
 			'name' => sanitize_text_field( $_POST['goweb_testimonial_author'] ),
-			'email' => sanitize_text_field( $_POST['goweb_testimonial_email'] ),
+			'email' => sanitize_email( $_POST['goweb_testimonial_email'] ),
 			'approved' => isset($_POST['goweb_testimonial_approved']) ? 1 : 0,
 			'featured' => isset($_POST['goweb_testimonial_featured']) ? 1 : 0,
 		);
