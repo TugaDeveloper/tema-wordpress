@@ -6,7 +6,7 @@ $args = array(
     'posts_per_page' => 5,
     'meta_query' => array(
         array(
-            'key' => '_alecaddd_testimonial_key',
+            'key' => '_goweb_testimonial_key',
             'value' => 's:8:"approved";i:1;s:8:"featured";i:1;',
             'compare' => 'LIKE'
         )
@@ -33,7 +33,7 @@ if ($query->have_posts()) :
     
     echo '</ul></div><div class="gw-slider--arrows">
     <span class="arrow gw-slider--arrows__left" >&#x3c;</span>
-    <span class="arrow gw-slider--arrows__right" >&#x3c;</span>  
+    <span class="arrow gw-slider--arrows__right" >&#x3e;</span>  
     </div></div></div>';
 endif;
 
