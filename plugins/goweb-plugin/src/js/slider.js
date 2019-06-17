@@ -33,3 +33,4 @@ const beforeSliding = i => {
 // triggers setas
 arrowRight.addEventListener('click', () => beforeSliding(1));
 arrowLeft.addEventListener('click', () => beforeSliding(0));
+
